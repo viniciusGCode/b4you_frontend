@@ -68,7 +68,7 @@ body {
   --muted-foreground: hsl(261, 100%, 93%); /* purple-heart-200 */
   --accent: hsl(260, 47%, 44%); /* purple-heart-800 */
   --accent-foreground: hsl(0, 0%, 100%); /* purple-heart-50 */
-  --destructive: hsl(0, 84%, 60%); /* Equivalente a oklch(0.577 0.245 27.325) */
+  --destructive: hsl(0, 95%, 75%); /* Equivalente a oklch(0.577 0.245 27.325) */
   --border: rgba(255, 255, 255, 0.1);
   --input: rgba(255, 255, 255, 0.15);
   --ring: hsl(259, 100%, 85%); /* purple-heart-400 */

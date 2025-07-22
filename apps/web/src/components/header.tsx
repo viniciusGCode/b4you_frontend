@@ -10,7 +10,10 @@ import { User, LogOut } from "lucide-react";
 export default function Header() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const router = useRouter();
-  const links = [{ to: "/", label: "Home" }];
+  const links = [
+    { to: "/", label: "Home" },
+    { to: "/dashboard", label: "Dashboard" },
+  ];
 
   useEffect(() => {
     const token = sessionStorage.getItem("authToken");
@@ -46,7 +49,10 @@ export default function Header() {
               Logout
             </Button>
           ) : (
-            <Button asChild className="bg-primary text-primary-foreground rounded-[var(--radius-sm)] cursor-pointer">
+            <Button
+              asChild
+              className="bg-primary text-primary-foreground rounded-[var(--radius-sm)] cursor-pointer"
+            >
               <Link href="/login">
                 <User className="mr-2 h-4 w-4" />
                 Login
