@@ -13,5 +13,8 @@
     "dev:web": "npm run dev --workspace web",
     "dev:server": "npm run dev --workspace server"
   },
-  "packageManager": "npm@9.2.0"
+  "packageManager": "npm@9.2.0",
+  "dependencies": {
+    "jwt-decode": "^4.0.0"
+  }
 }
