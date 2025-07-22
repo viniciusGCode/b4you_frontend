@@ -1,11 +1,26 @@
 "use client";
+
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { ModeToggle } from "./mode-toggle";
+import { Button } from "./ui/button";
+import { User, LogOut } from "lucide-react";
 
 export default function Header() {
-  const links = [
-    { to: "/", label: "Home" },
-  ];
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const router = useRouter();
+  const links = [{ to: "/", label: "Home" }];
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("authToken");
+    setIsAuthenticated(!!token);
+  }, []);
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("authToken");
+    setIsAuthenticated(false);
+  };
 
   return (
     <div>
@@ -21,7 +36,23 @@ export default function Header() {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-6">
+          {isAuthenticated ? (
+            <Button
+              onClick={handleLogout}
+              className="bg-primary text-primary-foreground rounded-[var(--radius-sm)] cursor-pointer"
+            >
+              <LogOut className="mr-2 h-4 w-4" />
+              Logout
+            </Button>
+          ) : (
+            <Button asChild className="bg-primary text-primary-foreground rounded-[var(--radius-sm)] cursor-pointer">
+              <Link href="/login">
+                <User className="mr-2 h-4 w-4" />
+                Login
+              </Link>
+            </Button>
+          )}
           <ModeToggle />
         </div>
       </div>

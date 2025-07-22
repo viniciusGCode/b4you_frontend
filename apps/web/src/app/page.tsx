@@ -66,7 +66,6 @@ export default function HomePage() {
         <main className="min-h-auto bg-background text-foreground px-4 py-8">
           <div className="flex justify-between items-center mb-8">
           </div>
-
           {loading ? (
             <div className="flex justify-center mt-16">
               <Loader />

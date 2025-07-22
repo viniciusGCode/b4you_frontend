@@ -25,6 +25,7 @@ import {
   updateProduct,
   deleteProduct,
 } from "@/lib/api";
+import { CirclePlus, Pencil, Trash } from "lucide-react";
 
 interface Product {
   id: string | number;
@@ -134,6 +135,11 @@ export default function HomePage() {
     }
   };
 
+  const handleEditButtonClick = (product: Product) => {
+    setSelectedProduct(product);
+    setIsEditModalOpen(true);
+  };
+
   return (
     <ThemeProvider>
       <Providers>
@@ -141,8 +147,9 @@ export default function HomePage() {
           <div className="flex justify-end items-center mb-8">
             <Button
               onClick={() => setIsCreateModalOpen(true)}
-              className="bg-primary text-primary-foreground rounded-[var(--radius-sm)]"
+              className="bg-primary text-primary-foreground rounded-[var(--radius-sm)] cursor-pointer"
             >
+              <CirclePlus />
               Adicionar Produto
             </Button>
           </div>
@@ -163,19 +170,18 @@ export default function HomePage() {
                     <CardTitle>{name}</CardTitle>
                     <div className="flex space-x-2">
                       <Button
-                        onClick={() => {
-                          setSelectedProduct({
+                        onClick={() =>
+                          handleEditButtonClick({
                             id,
                             name,
                             price,
                             amount,
                             description,
-                          });
-                          setIsEditModalOpen(true);
-                        }}
-                        className="bg-primary text-primary-foreground rounded-[var(--radius-sm)] text-sm py-1 px-2"
+                          })
+                        }
+                        className="bg-primary text-primary-foreground rounded-[var(--radius-sm)] text-sm py-1 px-2 cursor-pointer"
                       >
-                        Editar
+                        <Pencil />
                       </Button>
                       <Button
                         onClick={() => {
@@ -188,9 +194,9 @@ export default function HomePage() {
                           });
                           setIsDeleteModalOpen(true);
                         }}
-                        className="bg-destructive text-destructive-foreground rounded-[var(--radius-sm)] text-sm py-1 px-2"
+                        className="bg-destructive text-destructive-foreground rounded-[var(--radius-sm)] text-sm py-1 px-2 cursor-pointer hover:bg-red-400"
                       >
-                        Apagar
+                        <Trash className="text-white" />
                       </Button>
                     </div>
                   </CardHeader>
@@ -242,7 +248,7 @@ export default function HomePage() {
               setSelectedProduct(null);
             }}
             onSubmit={handleEditProduct}
-            initialData={selectedProduct || undefined}
+            initialData={selectedProduct ?? undefined}
             title="Editar Produto"
           />
           <DeleteModal

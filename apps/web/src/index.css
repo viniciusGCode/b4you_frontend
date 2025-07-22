@@ -22,7 +22,7 @@ body {
   --radius: 0.625rem;
   --background: hsl(0, 0%, 100%); /* purple-heart-50 */
   --foreground: hsl(261, 55%, 25%); /* purple-heart-900 */
-  --card: hsl(0, 0%, 100%); /* purple-heart-50 */
+  --card: hsl(265, 100%, 96%); /* purple-heart-50 */
   --card-foreground: hsl(261, 55%, 25%); /* purple-heart-900 */
   --popover: hsl(0, 0%, 100%); /* purple-heart-50 */
   --popover-foreground: hsl(261, 55%, 25%); /* purple-heart-900 */
@@ -34,7 +34,7 @@ body {
   --muted-foreground: hsl(260, 47%, 44%); /* purple-heart-800 */
   --accent: hsl(261, 100%, 93%); /* purple-heart-200 */
   --accent-foreground: hsl(261, 55%, 25%); /* purple-heart-900 */
-  --destructive: hsl(0, 84%, 60%); /* Equivalente a oklch(0.577 0.245 27.325) */
+  --destructive: hsl(0, 97%, 64%); /* Equivalente a oklch(0.577 0.245 27.325) */
   --border: hsl(259, 100%, 89%); /* purple-heart-300 */
   --input: hsl(259, 100%, 89%); /* purple-heart-300 */
   --ring: hsl(262, 100%, 71%); /* purple-heart-600 */
@@ -54,8 +54,8 @@ body {
 }
 
 .dark {
-  --background: hsl(261 55% 25%); /* purple-heart-900 */
-  --foreground: hsl(0, 0%, 100%); /* purple-heart-50 */
+  --background: hsl(260, 60%, 46%); /* purple-heart-900 */
+  --foreground: hsl(261, 100%, 93%); /* purple-heart-50 */
   --card: hsl(261 55% 25%);  /* purple-heart-950 */
   --card-foreground: hsl(0, 0%, 100%); /* purple-heart-50 */
   --popover: hsl(261, 55%, 25%); /* purple-heart-900 */

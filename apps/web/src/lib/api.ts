@@ -1,3 +1,5 @@
+import axios from "axios";
+
 interface Product {
   id: string | number;
   name: string;
@@ -30,16 +32,19 @@ export async function fetchProducts(): Promise<Product[]> {
     throw new Error("Token de autenticação expirado");
   }
 
-  const res = await fetch(
-    "https://b4youbackend-production.up.railway.app/products",
-    {
-      headers: {
-        Authorization: `Bearer ${authToken.token}`,
-      },
-    }
-  );
-  if (!res.ok) throw new Error("Falha ao carregar produtos");
-  return res.json();
+  try {
+    const response = await axios.get(
+      "https://b4youbackend-production.up.railway.app/products",
+      {
+        headers: {
+          Authorization: `Bearer ${authToken.token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Falha ao carregar produtos");
+  }
 }
 
 export async function createProduct(
@@ -63,19 +68,21 @@ export async function createProduct(
     throw new Error("Token de autenticação expirado");
   }
 
-  const res = await fetch(
-    "https://b4youbackend-production.up.railway.app/products",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${authToken.token}`,
-      },
-      body: JSON.stringify(data),
-    }
-  );
-  if (!res.ok) throw new Error("Falha ao criar produto");
-  return res.json();
+  try {
+    const response = await axios.post(
+      "https://b4youbackend-production.up.railway.app/products",
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken.token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Falha ao criar produto");
+  }
 }
 
 export async function updateProduct(
@@ -100,19 +107,21 @@ export async function updateProduct(
     throw new Error("Token de autenticação expirado");
   }
 
-  const res = await fetch(
-    `https://b4youbackend-production.up.railway.app/products/${id}`,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${authToken.token}`,
-      },
-      body: JSON.stringify(data),
-    }
-  );
-  if (!res.ok) throw new Error("Falha ao atualizar produto");
-  return res.json();
+  try {
+    const response = await axios.put(
+      `https://b4youbackend-production.up.railway.app/products/${id}`,
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken.token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Falha ao atualizar produto");
+  }
 }
 
 export async function deleteProduct(id: string | number): Promise<void> {
@@ -134,14 +143,16 @@ export async function deleteProduct(id: string | number): Promise<void> {
     throw new Error("Token de autenticação expirado");
   }
 
-  const res = await fetch(
-    `https://b4youbackend-production.up.railway.app/products/${id}`,
-    {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${authToken.token}`,
-      },
-    }
-  );
-  if (!res.ok) throw new Error("Falha ao deletar produto");
+  try {
+    await axios.delete(
+      `https://b4youbackend-production.up.railway.app/products/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${authToken.token}`,
+        },
+      }
+    );
+  } catch (error) {
+    throw new Error("Falha ao deletar produto");
+  }
 }

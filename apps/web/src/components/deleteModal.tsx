@@ -23,13 +23,13 @@ export default function DeleteModal({ isOpen, onClose, onConfirm, productName }:
         <CardFooter className="flex justify-end space-x-2">
           <Button
             onClick={onClose}
-            className="bg-primary text-primary-foreground rounded-[var(--radius-sm)]"
+            className="bg-primary text-primary-foreground rounded-[var(--radius-sm)] cursor-pointer "
           >
             Voltar
           </Button>
           <Button
             onClick={onConfirm}
-            className="bg-destructive text-destructive-foreground rounded-[var(--radius-sm)]"
+            className="bg-destructive text-destructive-foreground rounded-[var(--radius-sm)] cursor-pointer text-primary-foreground hover:bg-red-400"
           >
             Confirmar
           </Button>
