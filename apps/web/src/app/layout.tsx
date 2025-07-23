@@ -15,8 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "second-frontend",
-  description: "second-frontend",
+  title: "b4You",
 };
 
 export default function RootLayout({
